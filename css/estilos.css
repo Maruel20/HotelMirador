@@ -1,0 +1,347 @@
+:root {
+  --azul: #0a2b5e;
+  --azul-claro: #1e4d8c;
+  --cielo: #2aa9df;
+  --naranja: #ff6f2c;
+  --gris-claro: #f8f9fa;
+  --fuente-titulo: 'Georgia', serif;
+  --fuente-cuerpo: system-ui, -apple-system, sans-serif;
+}
+
+/* ================== GENERAL ================== */
+body {
+  font-family: var(--fuente-cuerpo);
+  background-color: #fcfcfc;
+  color: #444;
+  padding-top: 80px; /* Espacio para navbar fijo */
+}
+
+body.home {
+  padding-top: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--fuente-titulo);
+  color: var(--azul);
+}
+
+.section-title {
+  position: relative;
+  margin-bottom: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Línea decorativa debajo de los títulos */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--naranja);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+  background: var(--azul) !important; /* Fallback */
+  transition: all 0.4s ease;
+  padding: 1rem 0;
+}
+
+body.home .navbar {
+  background: transparent !important;
+  padding: 1.5rem 0;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 43, 94, 0.95) !important;
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand span {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.85) !important;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--naranja) !important;
+}
+
+/* ================== BOTONES ================== */
+.btn-reservar {
+  background-color: var(--naranja);
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(255, 111, 44, 0.3);
+}
+
+.btn-reservar:hover {
+  background-color: #1b62e6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 111, 44, 0.4);
+}
+
+/* ================== HERO / CAROUSEL ================== */
+#hero .carousel-item {
+  height: 100vh;
+  position: relative;
+}
+
+/* Overlay oscuro para que el texto resalte */
+#hero .carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+  z-index: 1;
+}
+
+.hero-img {
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* ================== TARJETAS (Habitaciones/Servicios) ================== */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card-room img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* ================== FORMULARIOS ================== */
+input.form-control, select.form-select, textarea.form-control {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  background-color: #fdfdfd;
+}
+
+input.form-control:focus, select.form-select:focus {
+  border-color: var(--cielo);
+  box-shadow: 0 0 0 4px rgba(42, 169, 223, 0.15);
+}
+
+/* ================== AZURE MAPS ================== */
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#azureMap {
+  width: 100%;
+  height: 450px;
+}
+
+.hotel-marker {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.hotel-marker:hover { transform: scale(1.2); }
+
+.map-popup {
+  padding: 10px;
+  text-align: center;
+}
+.map-popup h3 {
+  font-size: 1rem;
+  color: var(--azul);
+  margin-bottom: 5px;
+}
+
+/* ================== FOOTER ================== */
+footer {
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
+}
+
+#footer-map {
+  width: 100%;
+  height: 200px;
+  background: #eee; /* Color fondo mientras carga */
+  border-radius: 8px;
+}
+
+footer a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--cielo);
+}
+
+.scroll-top-btn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--azul);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+/* --- ANIMACIÓN DE PARPADEO (PULSO) --- */
+@keyframes pulso-atencion {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 111, 44, 0.7);
+  }
+  70% {
+    transform: scale(1.05); /* Crece un poquito */
+    box-shadow: 0 0 0 10px rgba(255, 111, 44, 0); /* El brillo se desvanece */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 111, 44, 0);
+  }
+}
+
+/* Modificamos tu botón existente */
+.btn-reservar {
+  background-color: var(--naranja);
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 50px;
+  padding: 0.7rem 1.5rem; /* Ajusté un poco el padding */
+  text-decoration: none;
+  display: inline-block; /* Importante para alineación */
+  
+  /* Agregamos la animación */
+  animation: pulso-atencion 2s infinite;
+  transition: background-color 0.3s ease; /* Solo transición de color */
+}
+
+/* Al pasar el mouse, pausamos la animación para que no maree */
+.btn-reservar:hover {
+  background-color: #e65b1b;
+  animation: none; 
+  transform: scale(1.05);
+}
+
+/* Ajuste para que los links del menú estén centrados verticalmente */
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+/* ================== FOOTER PREMIUM ================== */
+footer {
+  background-color: var(--azul); /* Fondo oscuro elegante */
+  color: rgba(255, 255, 255, 0.8); /* Texto blanco suave */
+  border-top: 4px solid var(--naranja) !important; /* Línea de acento arriba */
+  font-size: 0.95rem;
+}
+
+footer h5, footer h6 {
+  color: #fff;
+  font-family: var(--fuente-titulo);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Enlaces del footer */
+footer a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--naranja) !important; /* Naranja al pasar mouse */
+  padding-left: 5px; /* Pequeño movimiento a la derecha */
+}
+
+/* Iconos de contacto */
+footer .bi {
+  color: var(--naranja);
+  font-size: 1.1rem;
+}
+
+/* Redes Sociales */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff !important;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background-color: var(--naranja);
+  transform: translateY(-3px);
+  padding-left: 0; /* Reset del padding de enlaces */
+}
+
+/* Estilo del Mini Mapa */
+#footer-map {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.2); /* Borde sutil */
+  overflow: hidden;
+}
+
+/* Copyright area */
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+}
+/* ================== GALERÍA ================== */
+.gallery-img {
+  width: 100%;
+  height: 250px; /* Altura fija para todas las fotos */
+  object-fit: cover; /* Truco mágico: recorta para llenar sin deformar */
+  object-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-img:hover {
+  transform: scale(1.03); /* Zoom suave al pasar el mouse */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  z-index: 2;
+  position: relative;
+}
